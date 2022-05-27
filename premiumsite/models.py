@@ -113,8 +113,10 @@ class Model_iMac(models.Model):
 
 class Phone(models.Model):
     model_phone = models.ForeignKey(iPhone, verbose_name='Название', on_delete=models.CASCADE, null=True)
-    memory_phone = models.ForeignKey(Memory, help_text='Выберите память', on_delete=models.PROTECT, verbose_name='Память')
-    colors_phone = models.ForeignKey(AllColors, help_text="Выберите цвет", on_delete=models.PROTECT, verbose_name='Цвет')
+    memory_phone = models.ForeignKey(Memory, help_text='Выберите память', on_delete=models.PROTECT,
+                                     verbose_name='Память')
+    colors_phone = models.ForeignKey(AllColors, help_text="Выберите цвет", on_delete=models.PROTECT,
+                                     verbose_name='Цвет')
     region_phone = models.ForeignKey(Region, on_delete=models.PROTECT, verbose_name='Регион')
     price_phone = models.IntegerField(verbose_name='Стоимость')
     photo_phone = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True, verbose_name='Фото файлы')
@@ -165,26 +167,30 @@ class iMac(models.Model):
         verbose_name_plural = 'iMac'
         # ordering = ['-created_at']
 
-# class UsedPhones(models.Model):
-#     model_phone_phone = models.CharField(max_length=250)
-#     model_phone = models.CharField(max_length=100, null=True)
-#     colors_phone = models.ManyToManyField(AllColors, help_text="Выберите цвет")
-#     memory_phone = models.ManyToManyField(Memory, help_text='Выберите память')
-#     region_phone = models.CharField(max_length=100, null=True)
-#     photo_phone = models.ImageField(upload_to='photos_used/%Y/%m/%d', blank=True)
-#     about_phone = models.CharField(max_length=255, null=True, blank=True)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     update_at = models.DateTimeField(auto_now=True)
-#     availability_phone = models.BooleanField(default=False)
-#
-#     def __str__(self):
-#         return self.serial_phone
-#
-#     class Meta:
-#         verbose_name = 'Б/У Аппараты'
-#         verbose_name_plural = 'Б/У Аппараты'
-#         # ordering = ['-created_at', '-serial_phone']
 
+class UsedPhones(models.Model):
+    model_phone = models.ForeignKey(iPhone, on_delete=models.CASCADE, max_length=250)
+    memory_phone = models.ForeignKey(Memory, on_delete=models.CASCADE, help_text='Выберите память')
+    colors_phone = models.ForeignKey(AllColors, on_delete=models.CASCADE, help_text="Выберите цвет")
+    region_phone = models.ForeignKey(Region, on_delete=models.CASCADE, max_length=100, null=True)
+    photo_phone = models.ImageField(upload_to='photos_used/%Y/%m/%d', blank=True)
+    about_phone = models.CharField(max_length=255, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+    availability_phone = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.model_phone}'\
+               f'{self.memory_phone}'\
+               f'{self.colors_phone}'\
+               f'{self.region_phone}'\
+               f'{self.photo_phone}'\
+               f'{self.about_phone}'
+
+    class Meta:
+        verbose_name = 'Б/У Аппараты'
+        verbose_name_plural = 'Б/У Аппараты'
+        # ordering = ['-created_at', '-serial_phone']
 
 # class NewMacBook(models.Model):
 #     serial_macbook = models.CharField(max_length=150, null=True)

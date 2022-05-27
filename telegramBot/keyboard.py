@@ -36,7 +36,7 @@ inline_iphone_13 = InlineKeyboardButton('iPhone 13', callback_data='sale_iphone1
 inline_iphone_13pro = InlineKeyboardButton('iPhone 13 Pro', callback_data='sale_iphone13pro')
 inline_iphone_13promax = InlineKeyboardButton('iPhone 13 Pro Max', callback_data='sale_iphone13promax')
 inline_iphone_13mini = InlineKeyboardButton('iPhone 13 Mini', callback_data='sale_iphone13mini')
-inline_iphone_13mini = InlineKeyboardButton('iPhone SE (2-го поколения)', callback_data='sale_iphone_se2')
+inline_iphone_se2 = InlineKeyboardButton('iPhone SE (2-го поколения)', callback_data='sale_iphone_se2')
 inline_iphone_12 = InlineKeyboardButton('iPhone 12', callback_data='sale_iphone12')
 inline_iphone_12pro = InlineKeyboardButton('iPhone 12 Pro', callback_data='sale_iphone_12pro')
 inline_iphone_12promax = InlineKeyboardButton('iPhone 12 Pro Max', callback_data='sale_iphone_12promax')
@@ -49,7 +49,7 @@ inline_iphone_xsmax = InlineKeyboardButton('iPhone XS Max', callback_data='sale_
 inline_iphone_xr = InlineKeyboardButton('iPhone XR', callback_data='sale_iphone_xr')
 inline_iphone_x = InlineKeyboardButton('iPhone X', callback_data='sale_iphone_x')
 inline_iphone_8 = InlineKeyboardButton('iPhone 8', callback_data='sale_iphone_8')
-inline_iphone_8 = InlineKeyboardButton('iPhone SE (1-го поколения)', callback_data='sale_iphone_se1')
+inline_iphone_se1 = InlineKeyboardButton('iPhone SE (1-го поколения)', callback_data='sale_iphone_se1')
 inline_iphone_8plus = InlineKeyboardButton('iPhone 8 Plus', callback_data='sale_iphone_8plus')
 inline_iphone_7 = InlineKeyboardButton('iPhone 7', callback_data='sale_iphone_7')
 inline_iphone_7plus = InlineKeyboardButton('iPhone 7 Plus', callback_data='sale_iphone_7plus')
@@ -64,8 +64,9 @@ inline_kb_chose_new_model_iphone = InlineKeyboardMarkup(row_width=2).add(inline_
                                                                          inline_iphone_12, inline_iphone_12pro,
                                                                          inline_iphone_12promax, inline_iphone_12mini,
                                                                          inline_iphone_11, inline_iphone_11,
-                                                                         inline_iphone_11pro,
-                                                                         inline_iphone_11promax,inline_iphone_xs,
+                                                                         inline_iphone_11pro,inline_iphone_se2,
+                                                                         inline_iphone_11promax,
+                                                                         inline_iphone_xs,inline_iphone_se1,
                                                                          inline_iphone_xr,inline_iphone_x,
                                                                          inline_iphone_8,inline_iphone_8plus,
                                                                          inline_iphone_7, inline_iphone_7plus)

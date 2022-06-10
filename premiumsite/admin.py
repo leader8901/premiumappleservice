@@ -2,22 +2,35 @@ from django.contrib import admin
 
 # Register your models here.
 from premiumsite.forms import ProfileForm
-from premiumsite.models import *
+from premiumsite.models import Memory, AllColors, iPhone, Phone, MacBook,iMac, OperatingSystem, Region, NewMacBook
+
+
+def not_available(modeladmin, request, queryset):
+    queryset.update(status='n')
+
+
+not_available.short_description = "Нет в наличии"
+
+
+def available(modeladmin, request, queryset):
+    queryset.update(status='y', )
+
+
+available.short_description = "В наличии"
 
 
 # Define the admin class
 # @admin.register(Iphone)
 class PhoneAdmin(admin.ModelAdmin):
-    pass
     list_display = [
         'model_phone', 'memory_phone', 'colors_phone',
-        'region_phone', 'price_phone', 'availability_phone',
-        'new_or_used', 'created_at',
-        'update_at']
+        'region_phone', 'price_phone',
+        'new_or_used', 'created_at', 'status']
 
-    search_fields = ['model_phone']
+    search_fields = ['model_phone__iphone_name', 'memory_phone__memory_info', 'colors_phone__name_colors']
     # form = ProfileForm
     list_filter = ['model_phone', 'memory_phone', 'colors_phone']
+    actions = [not_available, available]
 
 
 # Register the Admin classes for Book using the decorator
@@ -44,6 +57,24 @@ class iMacAdmin(admin.ModelAdmin):
     pass
 
 
+@admin.register(OperatingSystem)
+class OperatingSystemAdmin(admin.ModelAdmin):
+    pass
+
+
+class NewMacBookAdmin(admin.ModelAdmin):
+    list_display = [
+        'serial_macbook',
+        'diagonal',
+        'years_macbook',
+        'chip',
+        'memory_macbook',
+        'colors_macbook',
+        'region_mac',
+        'created_at',
+        'availability_mac']
+
+
 @admin.register(MacBook)
 class MacBookAdmin(admin.ModelAdmin):
     pass
@@ -62,6 +93,7 @@ class iPhoneAdmin(admin.ModelAdmin):
 
 admin.site.register(Phone, PhoneAdmin)
 admin.site.register(iPhone, iPhoneAdmin)
+admin.site.register(NewMacBook, NewMacBookAdmin)
 
 '''class categories(admin.ModelAdmin):
     list_display = ('title', 'get_parents', 'when')'''

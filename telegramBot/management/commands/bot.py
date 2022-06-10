@@ -1,10 +1,8 @@
 from django.core.management.base import BaseCommand
 import telebot
 from telebot import apihelper, types  # Нужно для работы Proxy
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
-
 from telegramBot.models import Profile, Message
-from premiumsite.models import Phone, iPhone
+from premiumsite.models import Phone
 from telegramBot import keyboard as kb
 
 TOKEN = '1689112007:AAEujiNAdtUsZkoH86_dfPF15M6NIuhM4FU'
@@ -14,9 +12,10 @@ import urllib.request  # request нужен для загрузки файлов
 
 bot = telebot.TeleBot(TOKEN)  # Передаём токен из файла config.py
 apihelper.proxy = {'http': proxy}  # Передаём Proxy из файла config.py
+
 print(bot.get_me())
 
-user_repear = ['ремонт', 'починить', 'отремонтировать', 'почистить']
+user_repear = ['ремонт', 'починить', 'отремонтировать', 'почистить', 'замена', 'заменить']
 user_buy = ['покупка', 'купить', 'покупать']
 user_sale = ['продать', 'продажа', 'продаю', 'продавать']
 user_other = ['другое']
@@ -44,7 +43,7 @@ def welcome_start(message):
         profile, _ = Profile.objects.get_or_create(external_id=chat_id, defaults={'name': message.from_user.first_name})
         user_id = Message(profile=profile)
         user_id.save()
-        print('Логин добавлен')
+        #print('Логин добавлен')
         bot.send_message(message.chat.id, f'Приветствую вас {user_name}', reply_markup=kb.markup_menu)
 
     except Exception as m:
@@ -92,8 +91,9 @@ def callback_query(call):
     try:
         if call.message:
             if call.data == 'sale_new_iphone':
-                bot.send_message(call.message.chat.id, text="iPhone", reply_markup=kb.inline_kb_chose_new_model_iphone)
-            if call.data == 'sale_iphone13':
+                bot.send_message(call.message.chat.id, text="iPhone",
+                                 reply_markup=kb.inline_kb_chose_new_model_iphone)
+            elif call.data == 'sale_iphone13':
                 try:
                     model = Phone.objects.filter(model_phone__iphone_name=f'13')
                     if not model:
@@ -337,7 +337,7 @@ def callback_query(call):
             elif call.data == 'sale_iphone_se1':
                 try:
                     model = Phone.objects.filter(model_phone__iphone_name='SE (1-го поколения)')
-                    if not model:
+                    if Phone.status[0]:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
                         bot.send_message(call.message.chat.id, 'Отлично! Отправляю прайс')
@@ -345,8 +345,8 @@ def callback_query(call):
                             bot.send_message(call.message.chat.id, f'iPhone {item}')
                 except Phone.DoesNotExist as s:
                     print(s)
-
-
+            else:
+                bot.send_message(call.message.chat.id, 'Мы работаем над этим 🤧')
 
     except Exception as e:
         bot.send_message(call.message.chat.id, 'Упс 🤧 что-то не работает ⚙️')
@@ -357,7 +357,11 @@ class Command(BaseCommand):
     help = 'Телеграм-бот'
 
     def handle(self, *args, **options):
-        bot.polling(none_stop=True, interval=3)
+        try:
+            bot.polling(none_stop=True, timeout=123, interval=2)
+        except Exception as e:
+            print(f'Error {e}')
+
 
 # __gt для сравнений если больше
 # __ls если меньше

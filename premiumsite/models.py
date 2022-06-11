@@ -95,7 +95,7 @@ class iPhone(models.Model):
     class Meta:
         verbose_name = 'iPhone'
         verbose_name_plural = 'iPhone'
-        ordering = ['id']
+        ordering = ['iphone_name']
 
 
 # Навзание моделей айфон

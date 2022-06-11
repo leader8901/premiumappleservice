@@ -23,13 +23,13 @@ available.short_description = "В наличии"
 # @admin.register(Iphone)
 class PhoneAdmin(admin.ModelAdmin):
     list_display = [
-        'model_phone', 'memory_phone', 'colors_phone',
-        'region_phone', 'price_phone',
+        'iphone_name', 'memory_info', 'colors_name',
+        'region_name', 'price_phone',
         'new_or_used', 'created_at', 'status']
 
-    search_fields = ['model_phone__iphone_name', 'memory_phone__memory_info', 'colors_phone__name_colors']
+    search_fields = ['iphone_name', 'memory_info', 'colors_name']
     # form = ProfileForm
-    list_filter = ['model_phone', 'memory_phone', 'colors_phone']
+    list_filter = ['iphone_name', 'memory_info', 'colors_name']
     actions = [not_available, available]
 
 
@@ -64,13 +64,13 @@ class OperatingSystemAdmin(admin.ModelAdmin):
 
 class NewMacBookAdmin(admin.ModelAdmin):
     list_display = [
-        'serial_macbook',
+        'macbook_name',
         'diagonal',
         'years_macbook',
         'chip',
-        'memory_macbook',
-        'colors_macbook',
-        'region_mac',
+        'memory_info',
+        'colors_name',
+        'region_name',
         'created_at',
         'availability_mac']
 
@@ -88,7 +88,7 @@ class RegionAdmin(admin.ModelAdmin):
 # @admin.register(Apple)
 class iPhoneAdmin(admin.ModelAdmin):
     list_display = ('iphone_name',)
-    search_fields = ('model_phone',)
+    search_fields = ('iphone_name',)
 
 
 admin.site.register(Phone, PhoneAdmin)

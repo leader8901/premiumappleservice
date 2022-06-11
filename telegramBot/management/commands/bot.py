@@ -71,7 +71,6 @@ def text(message):
 
     else:
         bot.send_message(chat_id, text='А вот это мне не знакомо, пожалуй запомню ☺️')
-
         try:
             # Передаем текст пользователя в бд
             user_name, _ = Profile.objects.get_or_create(external_id=chat_id,
@@ -95,7 +94,7 @@ def callback_query(call):
                                  reply_markup=kb.inline_kb_chose_new_model_iphone)
             elif call.data == 'sale_iphone13':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name=f'13')
+                    model = Phone.objects.filter(iphone_name=f'13')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -107,7 +106,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone13pro':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='13 Pro')
+                    model = Phone.objects.filter(iphone_name='13 Pro')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -119,7 +118,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone13promax':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='13 Pro Max')
+                    model = Phone.objects.filter(iphone_name='13 Pro Max')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -132,7 +131,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone13mini':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='13 Mini')
+                    model = Phone.objects.filter(iphone_name='13 Mini')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -144,7 +143,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_12promax':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='12 Pro Max')
+                    model = Phone.objects.filter(iphone_name='12 Pro Max')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -156,7 +155,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_12pro':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='12 Pro')
+                    model = Phone.objects.filter(iphone_name='12 Pro')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -168,7 +167,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_12':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='12')
+                    model = Phone.objects.filter(iphone_name='12')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -180,7 +179,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_12mini':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='12 Mini')
+                    model = Phone.objects.filter(iphone_name='12 Mini')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -192,7 +191,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_se2':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='SE (2-го поколения)')
+                    model = Phone.objects.filter(iphone_name='SE (2-го поколения)')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -204,7 +203,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_11pro':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='11 Pro')
+                    model = Phone.objects.filter(iphone_name='11 Pro')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -216,7 +215,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_11promax':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='11 Pro Max')
+                    model = Phone.objects.filter(iphone_name='11 Pro Max')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -228,7 +227,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_11':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='11')
+                    model = Phone.objects.filter(iphone_name='11')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -240,7 +239,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_xs':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='XS')
+                    model = Phone.objects.filter(iphone_name='XS')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -252,7 +251,7 @@ def callback_query(call):
 
             elif call.data == 'iPhone_xsmax':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='XS Max')
+                    model = Phone.objects.filter(iphone_name='XS Max')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -264,7 +263,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_xr':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='XR')
+                    model = Phone.objects.filter(iphone_name='XR')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -276,7 +275,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_x':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='X')
+                    model = Phone.objects.filter(iphone_name='X')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -288,7 +287,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_8':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='8')
+                    model = Phone.objects.filter(iphone_name='8')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -300,7 +299,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_8plus':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='8 Plus')
+                    model = Phone.objects.filter(iphone_name='8 Plus')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -312,7 +311,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_7':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='7')
+                    model = Phone.objects.filter(iphone_name='7')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -324,7 +323,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_7plus':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='7 Plus')
+                    model = Phone.objects.filter(iphone_name='7 Plus')
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:
@@ -336,7 +335,7 @@ def callback_query(call):
 
             elif call.data == 'sale_iphone_se1':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name='SE (1-го поколения)')
+                    model = Phone.objects.filter(iphone_name='SE (1-го поколения)')
                     if Phone.status[0]:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:

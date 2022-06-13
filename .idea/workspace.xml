@@ -4,7 +4,6 @@
     <list default="true" id="a1181b20-1f43-4b48-866a-807425067ea7" name="Default Changelist" comment="[second commit] --&gt; fix postgreSQL connect">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/premiumappleservices/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/premiumappleservices/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/premiumsite/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/premiumsite/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirement.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirement.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -383,7 +382,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654988116688</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[second commit] --&gt; fix postgreSQL connect">
+      <created>1654989073586</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654989073586</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">

@@ -22,7 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-r@ko8r8(yi%1+c*mpilfv#hxv19aba5hc^x-6$or(2rrg^2zba'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+#DEBUG = False
+DEBUG = bool( os.environ.get('DJANGO_DEBUG', True))
 
 ALLOWED_HOSTS = ['134.0.104.12', 'localhost', 'premiumappleservice.ru']
 
@@ -35,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sessions',
     'premiumsite.apps.PremiumsiteConfig',
     'telegramBot.apps.TelegrambotConfig',
 
@@ -48,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
 
 ]
 
@@ -77,7 +81,7 @@ WSGI_APPLICATION = 'premiumappleservices.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django',
+        'NAME': 'djangodb',
         'USER': 'django',
         'PASSWORD': 'Orik8989ol',
         'HOST': 'localhost',

@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-r@ko8r8(yi%1+c*mpilfv#hxv19aba5hc^x-6$or(2rrg^2zba
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['134.0.104.12', 'localhost']
+ALLOWED_HOSTS = ['134.0.104.12', 'localhost', 'premiumappleservice.ru']
 
 # Application definition
 
@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'premiumappleservices.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'premiumdb',
-        'USER': 'leader',
-        'PASSWORD': 'Orik894744389_',
+        'NAME': 'django',
+        'USER': 'django',
+        'PASSWORD': 'Orik8989ol',
         'HOST': 'localhost',
         'PORT': '5432',
     }

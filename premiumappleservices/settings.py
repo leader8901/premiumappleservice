@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'premiumappleservices.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangodb',
+        'NAME': 'premium',
         'USER': 'django',
-        'PASSWORD': 'Orik8989ol',
+        'PASSWORD': 'Orik894744389',
         'HOST': 'localhost',
         'PORT': '5432',
     }

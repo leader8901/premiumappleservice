@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-r@ko8r8(yi%1+c*mpilfv#hxv19aba5hc^x-6$or(2rrg^2zba
 # DEBUG = False
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = ['134.0.104.12', 'localhost', 'premiumappleservice.ru']
+ALLOWED_HOSTS = ['134.0.104.12', 'localhost']
 
 # Application definition
 
@@ -74,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'premiumappleservices.wsgi.application'
+WSGI_APPLICATION = ' .application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

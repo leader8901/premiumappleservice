@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1181b20-1f43-4b48-866a-807425067ea7" name="Default Changelist" comment="[free commit] --&gt; change settings">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nginx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/premiumappleservices/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/premiumappleservices/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/premiumsite/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/premiumsite/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/premiumsite/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/premiumsite/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/premiumsite/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/premiumsite/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/secret_file.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegramBot/management/commands/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/telegramBot/management/commands/bot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test2.py" beforeDir="false" />
     </list>
@@ -441,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655682419276</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="[free commit] --&gt; change settings">
+      <created>1656888588397</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1656888588397</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">

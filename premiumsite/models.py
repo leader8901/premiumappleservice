@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.db import models
+
 import uuid  # Required for unique book instances
 
 # Create your models here.
@@ -123,12 +124,12 @@ class Model_iMac(models.Model):
 
 
 class Phone(models.Model):
-    iphone_name = models.ForeignKey(iPhone, verbose_name='Название', on_delete=models.CASCADE, null=True)
-    memory_info = models.ForeignKey(Memory, help_text='Выберите память', on_delete=models.PROTECT,
-                                    verbose_name='Память')
-    colors_name = models.ForeignKey(AllColors, help_text="Выберите цвет", on_delete=models.PROTECT,
-                                    verbose_name='Цвет')
-    region_name = models.ForeignKey(Region, on_delete=models.PROTECT, verbose_name='Регион')
+    model_phone = models.ForeignKey(iPhone, verbose_name='Название', on_delete=models.CASCADE, null=True)
+    memory_phone = models.ForeignKey(Memory, help_text='Выберите память', on_delete=models.PROTECT,
+                                     verbose_name='Память')
+    colors_phone = models.ForeignKey(AllColors, help_text="Выберите цвет", on_delete=models.PROTECT,
+                                     verbose_name='Цвет')
+    region_phone = models.ForeignKey(Region, on_delete=models.PROTECT, verbose_name='Регион')
     price_phone = models.IntegerField(verbose_name='Стоимость')
     photo_phone = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True, verbose_name='Фото файлы')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
@@ -146,7 +147,7 @@ class Phone(models.Model):
         """
         Строка для представления объекта Model.
         """
-        return f'{self.iphone_name} {self.memory_info} {self.colors_name} {self.region_name} {self.price_phone}'
+        return f'{self.model_phone} {self.memory_phone} {self.colors_phone} {self.region_phone} {self.price_phone}'
 
     class Meta:
         verbose_name = 'Новые iPhone'
@@ -156,11 +157,11 @@ class Phone(models.Model):
 
 # Модель БД iMac
 class iMac(models.Model):
-    imac_model = models.ForeignKey(Model_iMac, on_delete=models.CASCADE)
+    imac_serial = models.ForeignKey(Model_iMac, on_delete=models.CASCADE)
     years_imac = models.CharField(max_length=100)
-    colors_name = models.ForeignKey(AllColors, on_delete=models.PROTECT, help_text="Выберите цвет")
-    memory_info = models.ForeignKey(Memory, on_delete=models.PROTECT, help_text='Выберите память')
-    region_name = models.CharField(Region, max_length=150, null=True)
+    imac_color = models.ForeignKey(AllColors, on_delete=models.PROTECT, help_text="Выберите цвет")
+    imac_memory = models.ForeignKey(Memory, on_delete=models.PROTECT, help_text='Выберите память')
+    imac_region = models.CharField(Region, max_length=150, null=True)
     model_id = models.CharField(max_length=155)
     articles = models.CharField(max_length=155)
     operating_system = models.ForeignKey(OperatingSystem, on_delete=models.CASCADE, max_length=250)
@@ -172,12 +173,12 @@ class iMac(models.Model):
     availability_phone = models.BooleanField(default=True, choices=STATUS_CHOICES, verbose_name='В наличии')
 
     def __str__(self):
-        return self.imac_model
+        return self.imac_serial
 
     class Meta:
         verbose_name = 'iMac'
         verbose_name_plural = 'iMac'
-        ordering = ['-imac_model']
+        ordering = ['-imac_serial']
 
 
 class UsedPhones(models.Model):
@@ -206,14 +207,14 @@ class UsedPhones(models.Model):
 
 
 class NewMacBook(models.Model):
-    macbook_name = models.ForeignKey(MacBook, on_delete=models.CASCADE, max_length=150, null=True,
+    macbook_model = models.ForeignKey(MacBook, on_delete=models.CASCADE, max_length=150, null=True,
                                      verbose_name='Модель')
     years_macbook = models.CharField(max_length=100, null=True, verbose_name='Год')
-    colors_name = models.ForeignKey(AllColors, on_delete=models.CASCADE, help_text="Выберите цвет",
+    mac_color = models.ForeignKey(AllColors, on_delete=models.CASCADE, help_text="Выберите цвет",
                                     verbose_name='Цвет')
-    memory_info = models.ForeignKey(Memory, on_delete=models.CASCADE, help_text='Выберите память',
+    mac_memory = models.ForeignKey(Memory, on_delete=models.CASCADE, help_text='Выберите память',
                                     verbose_name='Память')
-    region_name = models.ForeignKey(Region, on_delete=models.CASCADE, max_length=100, null=True, verbose_name='Страна')
+    mac_region = models.ForeignKey(Region, on_delete=models.CASCADE, max_length=100, null=True, verbose_name='Страна')
     operating_system = models.ForeignKey(OperatingSystem, on_delete=models.CASCADE, max_length=250, null=True,
                                          verbose_name='Оперционная система')
     photo_phone = models.ImageField(upload_to='photos_imac/%Y/%m/%d', blank=True, verbose_name='Фото')
@@ -226,13 +227,13 @@ class NewMacBook(models.Model):
     update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.macbook_name}' \
+        return f'{self.macbook_model}' \
                f'{self.diagonal}' \
                f' {self.years_macbook}' \
                f' {self.chip}' \
-               f' {self.region_name}' \
-               f' {self.colors_name}' \
-               f' {self.memory_info}' \
+               f' {self.mac_region}' \
+               f' {self.mac_color}' \
+               f' {self.mac_memory}' \
                f' {self.operating_system}' \
                f'{self.availability_mac}' \
                f'{self.created_at}'
@@ -240,16 +241,11 @@ class NewMacBook(models.Model):
     class Meta:
         verbose_name = 'MacBook'
         verbose_name_plural = 'MacBook'
-        ordering = ['-macbook_name']
-
-
+        ordering = ['-macbook_model']
 
     '''def save(self, *args, **kwargs):
         self.last_updated_dt = datetime.now()
         super().save(*args, **kwargs)'''
-
-
-
 
 # def get_memory(self):
 # return ', '.join([Memory.memory_info for Memory in self.memory_phone.all()])

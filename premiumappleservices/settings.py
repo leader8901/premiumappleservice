@@ -11,8 +11,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+import environ
 from decouple import config
 
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,13 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r@ko8r8(yi%1+c*mpilfv#hxv19aba5hc^x-6$or(2rrg^2zba'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = ['134.0.104.12', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -37,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django.contrib.sessions',
+    # 'django.contrib.sessions',
     'premiumsite.apps.PremiumsiteConfig',
     'telegramBot.apps.TelegrambotConfig',
 
@@ -52,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    #'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.contrib.sessions.middleware.SessionMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
@@ -75,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = ' .application'
+WSGI_APPLICATION = 'premiumappleservices.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -83,11 +87,11 @@ WSGI_APPLICATION = ' .application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'premium',
-        'USER': 'django',
-        'PASSWORD': 'Orik894744389',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER'),
+        'PASSWORD': env('DATABASE_PASS'),
+        'HOST': env('HOST'),
+        'PORT': env('PORT'),
     }
 }
 
@@ -147,8 +151,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # Настройки бота
-TOKEN = '1689112007:AAEujiNAdtUsZkoH86_dfPF15M6NIuhM4FU'
-proxy = 'socks5://Proxy_User:Proxy_Password@Proxy_IP:Proxy_Port'
+TOKEN = env('TOKEN')
+proxy = env('proxy')
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

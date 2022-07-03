@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1181b20-1f43-4b48-866a-807425067ea7" name="Default Changelist" comment="[free commit] --&gt; change settings">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nginx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/secret_file.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/premiumappleservices/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/premiumappleservices/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/premiumsite/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/premiumsite/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/premiumsite/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/premiumsite/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/premiumsite/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/premiumsite/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/secret_file.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegramBot/management/commands/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/telegramBot/management/commands/bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test2.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +113,11 @@
       </list>
     </option>
   </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="premiumappleservice/invalid/Django" />
+    </ignored-facets>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -157,12 +167,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
-}</component>
+}]]></component>
   <component name="PyDebuggerOptionsProvider">
     <option name="myPyQtBackend" value="PyQt5" />
   </component>
@@ -176,8 +186,8 @@
       <recent name="$PROJECT_DIR$/telegramBot/bot" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test2 (1)">
-    <configuration name="keyboard" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.bot">
+    <configuration name="bot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="premiumappleservice" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -185,12 +195,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/telegramBot" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/telegramBot/management/commands" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/telegramBot/keyboard.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/telegramBot/management/commands/bot.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -310,11 +319,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.bot" />
         <item itemvalue="Python.test2 (1)" />
         <item itemvalue="Python.test (1)" />
         <item itemvalue="Python.tests" />
         <item itemvalue="Python.test2" />
-        <item itemvalue="Python.keyboard" />
       </list>
     </recent_temporary>
   </component>
@@ -425,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655498743230</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="[free commit] --&gt; change settings">
+      <created>1655682419276</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1655682419276</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">

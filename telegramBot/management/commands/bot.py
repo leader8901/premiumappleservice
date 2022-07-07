@@ -70,18 +70,11 @@ def text(message):
 
     else:
         bot.send_message(chat_id, text='А вот это мне не знакомо, пожалуй запомню ☺️')
-        try:
-            # Передаем текст пользователя в бд
-            user_name, _ = Profile.objects.get_or_create(external_id=chat_id,
-                                                         defaults={'name': message.from_user.first_name})
-            user_message = Message(profile=user_name, text=text_user)
-            user_message.save()
-            print(message.text)
-        # Улавливаем ошибки
-        except Exception as m:
-            error_message = f'Произошла ошибка: {m}'
-            print(error_message)
-            raise m
+
+        # Передаем текст пользователя в бд
+        user_name, _ = Profile.objects.get_or_create(external_id=chat_id, defaults={'name': message.from_user.first_name})
+        user_message = Message(profile=user_name, text=text_user)
+        user_message.save()
 
 
 @bot.callback_query_handler(func=lambda call: True)

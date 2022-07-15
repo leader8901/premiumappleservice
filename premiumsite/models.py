@@ -205,15 +205,15 @@ class UsedPhones(models.Model):
         verbose_name_plural = 'Б/У Аппараты'
         # ordering = ['-serial_phone']
 
-
+#Кллас для Макбука
 class NewMacBook(models.Model):
     macbook_model = models.ForeignKey(MacBook, on_delete=models.CASCADE, max_length=150, null=True,
-                                     verbose_name='Модель')
+                                      verbose_name='Модель')
     years_macbook = models.CharField(max_length=100, null=True, verbose_name='Год')
     mac_color = models.ForeignKey(AllColors, on_delete=models.CASCADE, help_text="Выберите цвет",
-                                    verbose_name='Цвет')
+                                  verbose_name='Цвет')
     mac_memory = models.ForeignKey(Memory, on_delete=models.CASCADE, help_text='Выберите память',
-                                    verbose_name='Память')
+                                   verbose_name='Память')
     mac_region = models.ForeignKey(Region, on_delete=models.CASCADE, max_length=100, null=True, verbose_name='Страна')
     operating_system = models.ForeignKey(OperatingSystem, on_delete=models.CASCADE, max_length=250, null=True,
                                          verbose_name='Оперционная система')

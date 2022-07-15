@@ -9,8 +9,8 @@ from telegramBot import keyboard as kb
 
 import urllib.request  # request нужен для загрузки файлов от пользователя
 
-bot = telebot.TeleBot(TOKEN)  # Передаём токен из файла config.py
-apihelper.proxy = {'http': proxy}  # Передаём Proxy из файла config.py
+bot = telebot.TeleBot(TOKEN)  # Передаём токен из файла env
+apihelper.proxy = {'http': proxy}  # Передаём Proxy из файла env
 
 print(bot.get_me())
 
@@ -28,7 +28,6 @@ def log_errors(f):
             error_message = f'Произошла ошибка: {e}'
             print(error_message)
             raise e
-
     return inner
 
 
@@ -86,7 +85,7 @@ def callback_query(call):
                                  reply_markup=kb.inline_kb_chose_new_model_iphone)
             elif call.data == 'sale_iphone13':
                 try:
-                    model = Phone.objects.filter(model_phone__iphone_name=f'13')
+                    model = Phone.objects
                     if not model:
                         bot.send_message(call.message.chat.id, 'Увы! Пока в наличии нет')
                     else:

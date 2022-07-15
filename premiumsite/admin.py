@@ -2,20 +2,15 @@ from django.contrib import admin
 
 # Register your models here.
 from premiumsite.forms import ProfileForm
-from premiumsite.models import Memory, AllColors, iPhone, Phone, MacBook,iMac, OperatingSystem, Region, NewMacBook
+from premiumsite.models import Memory, AllColors, iPhone, Phone, MacBook, iMac, OperatingSystem, Region, NewMacBook
+
 
 
 def not_available(modeladmin, request, queryset):
     queryset.update(status='n')
-
-
 not_available.short_description = "Нет в наличии"
-
-
 def available(modeladmin, request, queryset):
-    queryset.update(status='y', )
-
-
+    queryset.update(status='y')
 available.short_description = "В наличии"
 
 
@@ -45,7 +40,6 @@ class MemoryAdmin(admin.ModelAdmin):
 @admin.register(AllColors)
 class AllColorsAdmin(admin.ModelAdmin):
     pass
-
 
 # @admin.register(UsedPhones)
 # class UsedAdmin(admin.ModelAdmin):

@@ -1,19 +1,35 @@
-from django.core.management.base import BaseCommand
-import telebot
+#from django.core.management.base import BaseCommand
+import telebot  # подключение библиотеки pyTelegramBotAPI
+import logging  # библиотека журнала
 from telebot import apihelper, types  # Нужно для работы Proxy
-
-from premiumappleservices.settings import TOKEN, proxy
+# для запуска скриптов
+from subprocess import call
+import os
 from telegramBot.models import Profile, Message
 from premiumsite.models import Phone
 from telegramBot import keyboard as kb
-
+import environ
+# настройки для журнала
+logger = logging.getLogger('log')
+logger.setLevel(logging.INFO)
+fh = logging.FileHandler('someTestBot.log')
+fh.setLevel(logging.DEBUG)
+formatter = logging.Formatter("%(asctime)s | %(levelname)-7s | %(message)s")
+fh.setFormatter(formatter)
+logger.addHandler(fh)
 import urllib.request  # request нужен для загрузки файлов от пользователя
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
+
+# Настройки бота
+TOKEN = env('TOKEN')
+proxy = env('proxy')
 
 bot = telebot.TeleBot(TOKEN)  # Передаём токен из файла env
 apihelper.proxy = {'http': proxy}  # Передаём Proxy из файла env
 
-print(bot.get_me())
-
+# print(bot.get_me())
 user_repear = ['ремонт', 'починить', 'отремонтировать', 'почистить', 'замена', 'заменить']
 user_buy = ['покупка', 'купить', 'покупать']
 user_sale = ['продать', 'продажа', 'продаю', 'продавать']
@@ -38,12 +54,12 @@ def welcome_start(message):
     chat_id = message.chat.id
     try:
         # Добавляем пользователя после запуска бота
-        profile, _ = Profile.objects.get_or_create(external_id=chat_id, defaults={'name': message.from_user.first_name})
+        profile, _ = Profile.objects.get_or_create(external_id=chat_id,
+                                                   defaults={'name': message.from_user.first_name})
         user_id = Message(profile=profile)
         user_id.save()
-        #print('Логин добавлен')
+        # print('Логин добавлен')
         bot.send_message(message.chat.id, f'Приветствую вас {user_name}', reply_markup=kb.markup_menu)
-
     except Exception as m:
         error_message = f'Произошла ошибка: {m}'
         print(error_message)
@@ -71,7 +87,8 @@ def text(message):
         bot.send_message(chat_id, text='А вот это мне не знакомо, пожалуй запомню ☺️')
 
         # Передаем текст пользователя в бд
-        user_name, _ = Profile.objects.get_or_create(external_id=chat_id, defaults={'name': message.from_user.first_name})
+        user_name, _ = Profile.objects.get_or_create(external_id=chat_id,
+                                                     defaults={'name': message.from_user.first_name})
         user_message = Message(profile=user_name, text=text_user)
         user_message.save()
 
@@ -343,13 +360,32 @@ def callback_query(call):
         print(repr(e))
 
 
-class Command(BaseCommand):
-    help = 'Телеграм-бот'
-    def handle(self, *args, **options):
-        try:
-            bot.polling(none_stop=True, timeout=123, interval=2)
-        except Exception as e:
-            print(f'Error {e}')
+def start():
+    bot.polling(none_stop=True, timeout=123, interval=2)
+
+
+@bot.message_handler(commands=['server'])
+def send_server(message):
+    try:
+        # по этому пути на сервере лежит скрипт сбора информации по статусу сервера
+        call(["/root/scrps/status.sh"])
+        # читает файл с результатами выполнения скрипта
+        status = open("/root/scrps/status.txt", "rb").read()
+        bot.send_message(message.chat.id, status, parse_mode="Markdown")
+    except Exception as e:
+        logger.exception(str(e))
+        bot.send_message(message.chat.id, "Ошибка при получении статуса сервера. Подробности в журнале.")
+
+
+# class Command(BaseCommand):
+#     help = 'Телеграм-бот'
+#     def handle(self, *args, **options):
+#         try:
+#             bot.polling(none_stop=True, timeout=123, interval=2)
+#         except Exception as e:
+#             print(f'Error {e}')
+while True:
+    bot.polling(none_stop=True, timeout=123, interval=2)
 
 
 # __gt для сравнений если больше

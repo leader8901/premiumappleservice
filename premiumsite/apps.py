@@ -1,4 +1,7 @@
 from django.apps import AppConfig
+import asyncio
+
+from telegramBot.management.commands.bot import start
 
 
 class PremiumsiteConfig(AppConfig):
@@ -6,17 +9,9 @@ class PremiumsiteConfig(AppConfig):
     name = 'premiumsite'
 
     def ready(self):
-        import os
-        from telegramBot.management.commands import bot
-        # from . import jobs
-        # RUN_MAIN check to avoid running the code twice since manage.py runserver runs 'ready' twice on startup
-        if os.environ.get('RUN_MAIN', None) != 'true':
-            try:
-                bot.polling(none_stop=True, timeout=123, interval=2)
-            except Exception as e:
-                print(f'Error {e}')
+        from telegramBot import bot
+        bot.start()
 
 
 
 
-        # Your function to run the bot goes here

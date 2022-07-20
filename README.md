@@ -4,7 +4,7 @@
 Краткое руководство: Pooling & SQLite
 Самый быстрый способ запустить бота — запустить его в режиме пула с
 
-cd django-telegram-bot
+cd djangoProject
 Создание virtual environment (опционально)
 
 python3 -m venv (project)
